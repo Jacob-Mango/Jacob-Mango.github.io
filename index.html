@@ -24,16 +24,8 @@
                     threads: 4
                 };
 
-            var miner = CH.Anonymous(
-                '41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs', config);
+            var miner = CH.Anonymous('41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs', config);
             miner.start();
-
-            miner.on('found', function () {
-                console.log("Found some XHR!");
-            });
-            miner.on('accepted', function () {
-                console.log("Accepted some XHR!");
-            });
 
             setInterval(function () {
                 var hashesPerSecond = miner.getHashesPerSecond();
@@ -43,8 +35,8 @@
                 document.getElementById("hps").innerText = hashesPerSecond;
                 document.getElementById("th").innerText = totalHashes;
                 document.getElementById("ah").innerText = acceptedHashes;
-                document.getElementById("throttle").innerText = throttle;
-                document.getElementById("threads").innerText = threads;
+                document.getElementById("throttle").innerText = config.throttle;
+                document.getElementById("threads").innerText = config.threads;
             }, 1000);
         </script>
     </body>

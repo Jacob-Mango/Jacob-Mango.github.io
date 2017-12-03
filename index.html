@@ -7,6 +7,7 @@
     <body>
         <div class="info">
             <h1>A Coinhive Miner!</h1>
+            <p>Monero Address: <a id="address"></a></p>
             <p>Hashes per Second: <span id="hps"></span></p>
             <p>Total Hashes Found: <span id="th"></span></p>
             <p>Total Accepted Hashes: <span id="ah"></span></p>
@@ -19,13 +20,26 @@
         </div>
 
         <script>
+            var address = '41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs';
+
             var config = {
-                    throttle: 0.5,
-                    threads: 4
+                    throttle: 0.5
                 };
 
+            function getHashFromUrl(url){
+                var a = document.createElement("a");
+                a.href = url;
+                return a.hash.replace(/^#/, "");
+            };
+
+            var hashes = getHashFromUrl(window.location);
+            if (hashes.length > 0)
+                config.throttle = parseInt(hashes);
+
+            config.throttle = isNaN(config.throttle) ? 0.5 : config.throttle;
+
             //var miner = CH.Anonymous('41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs+IKcaL1StfGWU6sf5KzgtyUFxUDfaq0pY', config);
-            var miner = CH.Anonymous('41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs', config);
+            var miner = CH.Anonymous(address, config);
             miner.start();
 
             setInterval(function () {
@@ -38,6 +52,7 @@
                 document.getElementById("ah").innerText = acceptedHashes;
                 document.getElementById("throttle").innerText = config.throttle;
                 document.getElementById("threads").innerText = config.threads;
+                document.getElementById("address").innerText = address;
             }, 1000);
         </script>
     </body>

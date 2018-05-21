@@ -39,8 +39,6 @@ a {
 
 @media (max-device-width: 1024px) {
     .image {
-        -moz-background-size: auto;
-        -webkit-background-size: auto;
         background-attachment: scroll;
     }
 }

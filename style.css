@@ -97,13 +97,18 @@ h3 {
     padding: 50px 80px;
 }
 
-.projects {
+.projects-container {
     padding: 30px 50px;
     text-align: center;
 }
 
+.projects {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
 .projects .project {
-    width: 150px;
+    width: 170px;
     margin: 10px;
 
     position: relative;
@@ -127,7 +132,7 @@ h3 {
 
     position: absolute;
     z-index: 1;
-    left: -75px;
+    left: -80px;
     top: 50px;
 }
 

@@ -1,20 +1,40 @@
+:root {
+    --footer-col-count: 2;
+    --footer-col-gap: 10px;
+}
+
 body,
-html {
+html,
+a {
     height: 100%;
     margin: 0;
-    font: 400 15px/1.8 "Lato", sans-serif;
-    color: #777;
+    font: 400 15px/1.8 "Lato", sans-serif!important;
+    color: #777!important;
 }
 
 .image {
     position: relative;
-    opacity: 0.69;
+    opacity: 0.9;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("background.jpg");
+}
+
+.img-1 {
     min-height: 100%;
+    background-image: url("background.jpg");
+}
+
+.img-2 {
+    min-height: 40%;
+    background-image: url("background.jpg");
+    max-height: 40%;
+}
+
+.img-3 {
+    min-height: 100%;
+    background-image: url("background.jpg");
 }
 
 .caption {
@@ -32,6 +52,11 @@ html {
     padding: 18px;
     font-size: 25px;
     letter-spacing: 10px;
+    box-shadow: 0px 0px 2px #1f1f1f;
+}
+
+.caption:hover>span.border {
+    box-shadow: 0px 0px 4px #1f1f1f;
 }
 
 h3 {
@@ -41,9 +66,83 @@ h3 {
     color: #111;
 }
 
+.text-area {
+    color: #777;
+    background-color: white;
+    text-align: center;
+    text-align: justify;
+    box-shadow: 0px 0px 4px #1f1f1f;
+}
+
+.text-area:hover {
+    box-shadow: 0px 0px 7px #1f1f1f;
+}
+
+.text-area p {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.text-area p::after {
+    content: "\A";
+}
+
+.main {
+    padding: 50px 80px;
+}
+
+.projects {
+    padding: 30px 50px;
+    text-align: center;
+}
+
+.projects .project {
+    width: 150px;
+    margin: 10px;
+
+    position: relative;
+    display: inline-block;
+}
+
+.projects .project h4:after {
+    content: " \25BC";
+}
+
+.projects .project .information {
+    visibility: hidden;
+    display: none;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    box-shadow: 0px 0px 7px #1f1f1f;
+
+    text-align: center;
+    padding: 5px 0;
+
+    position: absolute;
+    z-index: 1;
+    left: -75px;
+    top: 50px;
+}
+
+.projects .project:hover>.information {
+    visibility: visible;
+    display: block;
+}
+
+.projects .project:active>.information {
+    visibility: visible;
+    display: block;
+}
+
+@media screen and (max-device-width: 800px) {
+    .footer .ul {
+        max-height: 150px;
+    }
+}
 
 @media only screen and (max-device-width: 1024px) {
-    .bgimg {
+    .image {
         background-attachment: scroll;
     }
 }
